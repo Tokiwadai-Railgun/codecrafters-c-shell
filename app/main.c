@@ -16,10 +16,18 @@ int main() {
     fgets(input, 100, stdin);
     input[strlen(input) - 1] = '\0';
 
-    if (strcmp(input, "exit 0") == 0) {
+    char * token = strtok(input, " ");
+    char * arguments = strtok(NULL, "\0");
+
+    if (strcmp(token, "echo") == 0) {
+      printf("%s\n", arguments);
+    } else if (strcmp(token, "exit") == 0) {
       exit(0);
+    } else {
+      printf("%s: command not found\n", input);
     }
-    printf("%s: command not found\n", input);
+
+
   }
 
 
